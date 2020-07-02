@@ -13,6 +13,33 @@
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
+  class Brick {
+    constructor() {
+      this.width = 75;
+      this.height = 20;
+      this.padding = 10;
+      this.offsetTop = 30;
+      this.offsetLeft = 30;
+      this.x = 0;
+      this.y = 0;
+      this.status = 1;
+    }
+
+    detectCollision() {
+      if(this.status == 1) {
+        if(x > this.x && x < this.x+this.width && y > this.y && y < this.y+this.height) {
+          dy = -dy;
+          this.status = 0;
+          score++;
+          if(score == brickRowCount*brickColumnCount) {
+            alert("YOU WIN, CONGRATS!");
+            document.location.reload();
+          }
+        }
+      }
+    }
+  }
+
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   var ballRadius = 10;
@@ -27,11 +54,6 @@
   var leftPressed = false;
   var brickRowCount = 5;
   var brickColumnCount = 3;
-  var brickWidth = 75;
-  var brickHeight = 20;
-  var brickPadding = 10;
-  var brickOffsetTop = 30;
-  var brickOffsetLeft = 30;
   var score = 0;
   var lives = 3;
 
@@ -39,7 +61,9 @@
   for(var c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
     for(var r=0; r<brickRowCount; r++) {
-      bricks[c][r] = { x: 0, y: 0, status: 1 };
+      bricks[c][r] = new Brick();
+      bricks[c][r].x = (r*(bricks[c][r].width+bricks[c][r].padding))+bricks[c][r].offsetLeft;
+      bricks[c][r].y = (c*(bricks[c][r].height+bricks[c][r].padding))+bricks[c][r].offsetTop;
     }
   }
 
@@ -74,18 +98,7 @@
   function collisionDetection() {
     for(var c=0; c<brickColumnCount; c++) {
       for(var r=0; r<brickRowCount; r++) {
-        var b = bricks[c][r];
-        if(b.status == 1) {
-          if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-            dy = -dy;
-            b.status = 0;
-            score++;
-            if(score == brickRowCount*brickColumnCount) {
-              alert("YOU WIN, CONGRATS!");
-              document.location.reload();
-            }
-          }
-        }
+        bricks[c][r].detectCollision();
       }
     }
   }
@@ -108,12 +121,8 @@
     for(var c=0; c<brickColumnCount; c++) {
       for(var r=0; r<brickRowCount; r++) {
         if(bricks[c][r].status == 1) {
-          var brickX = (r*(brickWidth+brickPadding))+brickOffsetLeft;
-          var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
-          bricks[c][r].x = brickX;
-          bricks[c][r].y = brickY;
           ctx.beginPath();
-          ctx.rect(brickX, brickY, brickWidth, brickHeight);
+          ctx.rect(bricks[c][r].x, bricks[c][r].y, bricks[c][r].width, bricks[c][r].height);
           ctx.fillStyle = "#0095DD";
           ctx.fill();
           ctx.closePath();
