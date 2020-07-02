@@ -25,7 +25,7 @@ VSCode를 사용할 경우 breakpoint를 설정한 후 `Run > Start Debugging` �
 
 ### call stack의 의미
 
-![VSCode debugger](https://i.stack.imgur.com/s0Ilj.png)
+![Call Stack](https://i.stack.imgur.com/s0Ilj.png)
 
 호출 스택은 여러 함수들(functions)을 호출하는 스크립트에서 해당 위치를 추적하는 인터프리터를 위한 메커니즘입니다. 현재 어떤 함수가 동작하고있는 지, 그 함수 내에서 어떤 함수가 동작하는 지, 다음에 어떤 함수가 호출되어야하는 지 등을 제어합니다.
 
