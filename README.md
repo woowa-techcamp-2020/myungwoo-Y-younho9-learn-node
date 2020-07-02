@@ -33,7 +33,7 @@ VSCode를 사용할 경우 breakpoint를 설정한 후 `Run > Start Debugging` �
 
 ### Step over / Step into / Step out
 
-![debugging step](http://www.dbguide.net/publishing/img/knowledge/1201248ok01.jpg)
+![debugging step](images/debugging-step.jpg)
 
 #### Step over
 
