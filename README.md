@@ -13,7 +13,7 @@
 
 [미션 설명](https://github.com/woowa-techcamp-2020/woowa-honux/blob/master/week1-day2-new-js-mission.md)
 
-### [워밍업: 벽돌 깨기](https://github.com/woowa-techcamp-2020/myungwoo-Y-younho9-learn-node/tree/master/break-bricks)
+### [워밍업: 벽돌 깨기](https://github.com/woowa-techcamp-2020/myungwoo-Y-younho9-learn-node/tree/master/arkanoid)
 
 ### Algorithm
 
